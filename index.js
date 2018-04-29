@@ -17,9 +17,9 @@ socket.on(
 
 function getSongAndSave(data) {
   if(data[0] == '111') {
-    let song = data.slice(4, data.length-3);
-    let _song = `${song[0]}${((' / ' + song[1]) || ',')}${((' - ' + song[2]) || ',')}`;
-    fs.writeFileSync('./np.txt', _song);
-    console.log('Now Playing: ', _song);
+    let json = JSON.parse(data[4]);
+    let song = `${json.artist != '?' ? json.artist : ''}${json.album != '?' ? " ["+json.album+"]" : ''} - ${json.title != '?' ? json.title : ''}`
+    fs.writeFileSync('./np.txt', song);
+     console.log('Now Playing: ', song);
   }
 }
