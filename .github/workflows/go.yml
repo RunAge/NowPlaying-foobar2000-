@@ -31,4 +31,4 @@ jobs:
         fi
 
     - name: Build
-      run: cd /go && go build -v ./
+      run: ls && go build -v ./
